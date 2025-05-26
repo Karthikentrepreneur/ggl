@@ -1,117 +1,115 @@
-import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, ArrowRight, Facebook, Linkedin } from "lucide-react";
+
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 export const Footer = () => {
-  const footerAnimation = {
-    hidden: {
-      opacity: 0,
-      y: 20
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
-    }
-  };
-  return <footer className="pt-16 pb-8 bg-gradient-to-b from-white to-gray-100">
-      <div className="container mx-auto px-4">
-        {/* Decorative Line */}
-        <div className="h-1 bg-gradient-to-r from-brand-navy via-brand-gold to-brand-navy rounded-full mb-8"></div>
-
-        {/* Revised Column Layout - Better spacing */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-6 lg:gap-4">
-          {/* Column 1: Logo & About Section */}
-          <motion.div initial="hidden" whileInView="visible" viewport={{
-          once: true
-        }} variants={footerAnimation} className="flex flex-col items-start">
-            <div className="mb-4">
-              <img src="/lovable-uploads/GGL.png" alt="GGL Logo" className="h-14 w-auto object-contain" loading="lazy" />
-              <img src="/1GlobalEnterprises.png" alt="1 Global Enterprises Logo" className="h-10 w-auto object-contain mt-2" />
-            </div>
-            <p className="text-sm md:text-base text-gray-600 max-w-xs text-justify">
-              GGL is a global freight forwarder offering premium logistics services, backed by a team with over 25 years of expertise in international and domestic transportation.
+  return <footer className="bg-gradient-to-b from-gray-900 to-gray-950 text-white relative">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-500/20 to-transparent" />
+      
+      <div className="container mx-auto px-4 pt-16 pb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          {/* Company Info */}
+          <div className="space-y-6">
+            <Link to="/" className="inline-block">
+              <img alt="Orange Office Technologies" className="h-12 w-auto bg-white/10 p-2 rounded-lg backdrop-blur-sm" src="/lovable-uploads/8b06ebf9-b79a-4441-9151-cb857e520c88.png" />
+            </Link>
+            <p className="text-sm text-gray-400">
+              Orange Office Technologies Pvt Ltd. is a Neutral KPO Service Provider offering expert services in logistics operations.
             </p>
-            <div className="flex space-x-3 mt-4">
-              <motion.a href="https://www.facebook.com/gglusa" target="_blank" className="bg-brand-navy text-white p-2 rounded-full hover:bg-brand-gold transition" whileHover={{
-              y: -3,
-              scale: 1.1
-            }} whileTap={{
-              scale: 0.95
-            }}>
-                <Facebook size={18} />
-              </motion.a>
-              <motion.a href="https://www.linkedin.com/company/gglus/" target="_blank" className="bg-brand-navy text-white p-2 rounded-full hover:bg-brand-gold transition" whileHover={{
-              y: -3,
-              scale: 1.1
-            }} whileTap={{
-              scale: 0.95
-            }}>
-                <Linkedin size={18} />
-              </motion.a>
+            <div className="flex space-x-4">
+              <a href="https://www.facebook.com/people/Orange-Office-Technologies-Pvt-Ltd/61566454888473/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                <Facebook className="h-5 w-5" />
+              </a>
+              <a href="https://www.linkedin.com/company/orange-office-technologies-pvt-ltd/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+                <Linkedin className="h-5 w-5" />
+              </a>
             </div>
-          </motion.div>
+          </div>
 
-          {/* Column 2: Navigation */}
-          <motion.div initial="hidden" whileInView="visible" viewport={{
-          once: true
-        }} variants={footerAnimation} transition={{
-          delay: 0.2
-        }} className="flex flex-col items-start md:items-center md:mx-auto">
-            <h3 className="font-bold text-lg text-brand-navy mb-4">Navigation</h3>
-            <div className="flex flex-col gap-2">
+          {/* Quick Links */}
+          <div>
+            <h4 className="font-bold text-lg mb-6">Quick Links</h4>
+            <ul className="space-y-3">
               {[{
-              name: "Home",
-              path: "/"
+              to: "/about",
+              label: "About Us"
             }, {
-              name: "About",
-              path: "/about"
+              to: "/services",
+              label: "Our Services"
             }, {
-              name: "Services",
-              path: "/services"
+              to: "/clients",
+              label: "Clients"
             }, {
-              name: "Contact us",
-              path: "/contact"
-            }].map((link, index) => <Link key={index} to={link.path} className="text-gray-600 hover:text-brand-gold transition flex items-center gap-2">
-                  <ArrowRight size={14} className="text-brand-gold" />
-                  {link.name}
-                </Link>)}
-            </div>
-          </motion.div>
+              to: "/careers",
+              label: "Careers"
+            }, {
+              to: "/contact",
+              label: "Contact"
+            }].map((link, index) => <li key={index}>
+                  <Link to={link.to} className="text-gray-400 hover:text-white transition-colors text-sm">
+                    {link.label}
+                  </Link>
+                </li>)}
+            </ul>
+          </div>
 
-          {/* Column 3: Contact Info */}
-          <motion.div initial="hidden" whileInView="visible" viewport={{
-          once: true
-        }} variants={footerAnimation} transition={{
-          delay: 0.4
-        }} className="flex flex-col items-start md:items-end lg:items-start lg:pl-10">
-            <h3 className="font-bold text-lg text-brand-navy mb-4">Contact Us</h3>
-            <div className="space-y-3 text-gray-600">
-              <div className="flex items-start gap-2">
-                <MapPin size={18} className="text-brand-gold mt-1 flex-shrink-0" />
-                <p>Suite 5, 7-9 Mallet Road, Tullamarine, Victoria, 3043</p>
-              </div>
-              <div className="flex items-center gap-2">
-                <Phone size={18} className="text-brand-gold flex-shrink-0" />
-                <p>+61 432254969</p>
-              </div>
-              <div className="flex items-center gap-2">
-                <Phone size={18} className="text-brand-gold flex-shrink-0" />
-                <p>+61 388205157</p>
-              </div>
-              <div className="flex items-center gap-2">
-                <Mail size={18} className="text-brand-gold flex-shrink-0" />
-                <p>info@gglaustralia.com</p>
-              </div>
+          {/* Contact Info */}
+          <div>
+            <h4 className="font-bold text-lg mb-6">Contact Us</h4>
+            <ul className="space-y-4">
+              <li className="flex items-start space-x-3 text-sm text-gray-400">
+                <MapPin size={20} className="text-primary flex-shrink-0 mt-1" />
+                <span>KAIZEN" 2nd &amp; 3rd Floor ,New No.G3 (Old No.G1), G Block, Plot No.565Q, 18th Street, Chinthamani, Anna Nagar East, 
+   Chennai 600102.</span>
+              </li>
+              {/* Added Kochi Office address */}
+              <li className="flex items-start space-x-3 text-sm text-gray-400">
+                <MapPin size={20} className="text-primary flex-shrink-0 mt-1" />
+                <span>
+                  No 34/656, Neelima, Toll Jn, Edappally, Ernakulam, Kochi, Kerala 682024.
+                  <div className="text-xs text-gray-500">(Landmark: OPP Metro Pillar 394)</div>
+                </span>
+              </li>
+              {/* Added Kochi Office 2 address */}
+              <li className="flex items-start space-x-3 text-sm text-gray-400">
+                <MapPin size={20} className="text-primary flex-shrink-0 mt-1" />
+                <span>
+                 C.V.M Arcade, 1st & 2nd Floor , Club Junction Pukkattupady Road,Edappally - 682024.
+                  <div className="text-xs text-gray-500"></div>
+                </span>
+              </li>
+              <li className="flex items-center space-x-3 text-sm text-gray-400">
+                <Phone size={20} className="text-primary flex-shrink-0" />
+                <span>+91 44 4796 5437</span>
+              </li>
+              <li className="flex items-center space-x-3 text-sm text-gray-400">
+                <Mail size={20} className="text-primary flex-shrink-0" />
+                <span>info@orangeot.com</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Newsletter */}
+          <div>
+            <h4 className="font-bold text-lg mb-6">Newsletter</h4>
+            <p className="text-sm text-gray-400 mb-4">
+              Subscribe to our newsletter for updates and insights.
+            </p>
+            <div className="space-y-3">
+              <Input type="email" placeholder="Your email" className="bg-white/5 border-gray-800 text-white placeholder:text-gray-500" />
+              <Button className="w-full">Subscribe</Button>
             </div>
-          </motion.div>
+          </div>
         </div>
 
-        {/* Footer Bottom */}
-        <div className="text-center text-gray-600 mt-10 text-sm">
-          &copy; {new Date().getFullYear()} GGL. All Rights Reserved.
+        {/* Bottom Bar */}
+        <div className="border-t border-gray-800 pt-8 mt-12">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-sm text-gray-500">
+              © {new Date().getFullYear()} Orange Office Technologies Pvt Ltd. All rights reserved.
+            </p>
+          </div>
         </div>
       </div>
     </footer>;
