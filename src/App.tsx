@@ -14,6 +14,7 @@ import LiquidTransportation from "./pages/services/LiquidTransportation";
 import AirFreight from "./pages/services/AirFreight";
 import OceanFreight from "./pages/services/OceanFreight";
 import CustomsClearance from "./pages/services/CustomsClearance";
+import ProjectCargo from "./pages/services/ProjectCargo";
 import GlobalPresence from "./pages/GlobalPresence";
 import { ScrollToTop } from "./components/common/ScrollToTop";
 
@@ -37,6 +38,7 @@ function AppRoutes() {
         <Route path="/services/air-freight" element={<AirFreight />} />
         <Route path="/services/ocean-freight" element={<OceanFreight />} />
         <Route path="/services/customs-clearance" element={<CustomsClearance />} />
+        <Route path="/services/project-cargo" element={<ProjectCargo />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Toaster />
