@@ -7,12 +7,29 @@ import { cn } from "@/lib/utils";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useIsMobile } from '@/hooks/use-mobile';
 
+interface City {
+  name: string;
+  lat: number;
+  lng: number;
+  address?: string;
+  contacts?: string[];
+  email?: string;
+}
+
+interface Country {
+  code: string;
+  name: string;
+  lat: number;
+  lng: number;
+  cities: City[];
+}
+
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-const countries = [{
+const countries: Country[] = [{
   code: "in",
   name: "India",
   lat: 22.3511,
@@ -284,14 +301,14 @@ const Sidebar: React.FC<SidebarProps> = ({
 }) => {
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
   const [expandedCountry, setExpandedCountry] = useState<string | null>(null);
-  const [selectedLocation, setSelectedLocation] = useState<any | null>(null);
+  const [selectedLocation, setSelectedLocation] = useState<City | null>(null);
   const isMobile = useIsMobile();
   
   useEffect(() => {
     iframeRef.current = document.querySelector('iframe');
   }, []);
   
-  const navigateToLocation = (lat: number, lng: number, city: any = null) => {
+  const navigateToLocation = (lat: number, lng: number, city: City | null = null) => {
     if (iframeRef.current) {
       try {
         const newSrc = iframeRef.current.src.split('&z=')[0] + `&z=6&ll=${lat},${lng}`;

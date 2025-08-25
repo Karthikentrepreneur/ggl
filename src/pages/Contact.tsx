@@ -9,10 +9,19 @@ import { motion } from 'framer-motion';
 import { FaLinkedin, FaFacebookF } from 'react-icons/fa';
 import { Phone, Mail, MapPin, Send } from 'lucide-react';
 
-const Contact = () => {
-  const { register, handleSubmit } = useForm();
+interface ContactFormData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  organization: string;
+  message: string;
+}
 
-  const onSubmit = (data: any) => {
+const Contact = () => {
+  const { register, handleSubmit } = useForm<ContactFormData>();
+
+  const onSubmit = (data: ContactFormData) => {
     console.log(data);
   };
 
