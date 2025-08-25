@@ -17,6 +17,8 @@ import CustomsClearance from "./pages/services/CustomsClearance";
 import ProjectCargo from "./pages/services/ProjectCargo";
 import GlobalPresence from "./pages/GlobalPresence";
 import { ScrollToTop } from "./components/common/ScrollToTop";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsAndConditions from "./pages/TermsAndConditions";
 
 // Create a new QueryClient instance
 const queryClient = new QueryClient();
@@ -39,6 +41,8 @@ function AppRoutes() {
         <Route path="/services/ocean-freight" element={<OceanFreight />} />
         <Route path="/services/customs-clearance" element={<CustomsClearance />} />
         <Route path="/services/project-cargo" element={<ProjectCargo />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Toaster />
